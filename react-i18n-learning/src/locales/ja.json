@@ -1,0 +1,12 @@
+{
+  "welcome": {
+    "title": "React i18nへようこそ",
+    "description": "ボタンで表示言語を切り替えてみましょう。"
+  },
+  "greeting": "こんにちは、{{name}}さん",
+  "language": {
+    "label": "表示言語を選ぶ",
+    "japanese": "日本語",
+    "english": "English"
+  }
+}

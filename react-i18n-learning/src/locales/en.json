@@ -1,0 +1,12 @@
+{
+  "welcome": {
+    "title": "Welcome to React i18n",
+    "description": "Try switching the display language with the buttons."
+  },
+  "greeting": "Hello, {{name}}!",
+  "language": {
+    "label": "Choose display language",
+    "japanese": "Japanese",
+    "english": "English"
+  }
+}
