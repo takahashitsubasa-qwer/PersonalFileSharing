@@ -1,0 +1,9 @@
+{
+  "name": "fullstack-app",
+  "description": "React + Tailwind CSS + FastAPI のフルスタック開発環境",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "setup:win": "setup.bat"
+  }
+}
