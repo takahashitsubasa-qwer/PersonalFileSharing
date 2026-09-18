@@ -5,6 +5,7 @@ function App() {
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [text, setText] = useState("")
 
   useEffect(() => {
     fetchMessage()
@@ -23,6 +24,17 @@ function App() {
     } finally {
       setLoading(false)
     }
+  }
+  const postText = async () => {
+    const response = await fetch("/postText",{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: text }), 
+    })
+    const data = await response.json()
+    console.log(data)
   }
 
   return (
@@ -61,7 +73,11 @@ function App() {
         >
           再度確認
         </button>
-
+        <div className="mt-8 pt-6 border-t border-gray-200" />
+          <input 
+            type="text" name="example" value={text} onChange={(e) => setText(e.target.value)} className='border border-gray-300 rounded-lg px-4 py-2'>
+          </input>
+          <h2>{text}</h2>
         <div className="mt-8 pt-6 border-t border-gray-200">
           <h3 className="text-sm font-semibold text-gray-700 mb-3">
             環境:

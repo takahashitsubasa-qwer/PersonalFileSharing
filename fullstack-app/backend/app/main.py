@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from pydantic import BaseModel
 import os
 
 load_dotenv()
@@ -23,6 +24,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+class Text(BaseModel):
+    text: str
+
 @app.get("/")
 def read_root():
     return {"message": "FastAPI with React + Tailwind CSS"}
@@ -34,3 +39,7 @@ def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+@app.post("/postText")
+def postText(text:Text):
+    return{"text": text.text}
