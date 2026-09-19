@@ -32,14 +32,17 @@ class Text(BaseModel):
 def read_root():
     return {"message": "FastAPI with React + Tailwind CSS"}
 
-@app.get("/api/health")
+@app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+@app.post("/postText")
+def postText(text:Text):
+    print({"text": text.text})
+    return {"text": text.text}
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
-@app.post("/postText")
-def postText(text:Text):
-    return{"text": text.text}
+
