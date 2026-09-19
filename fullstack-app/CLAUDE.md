@@ -11,6 +11,22 @@
 * Database: MySQL
 * その他: Git / Docker / HTTP / REST API
 
+## リポジトリ（PersonalFileSharing）について
+
+`PersonalFileSharing` という名前は、**2台のパソコン間でGitHubを使ってファイルを共有するため**に付けたものです。
+
+そのため、ディレクトリ構成としては `PersonalFileSharing` 配下にそれぞれのプロジェクトのファイルがある形になっています。
+
+```text
+PersonalFileSharing/
+├── fullstack-app/   ← 現在のプロジェクト（React + FastAPI）
+├── RLE/
+└── ...              ← その他のプロジェクトごとのフォルダ
+```
+
+* `PersonalFileSharing` 自体はアプリの名前ではなく、複数プロジェクトをまとめて同期するための入れ物です。
+* 各プロジェクトは独立しており、基本的に他のフォルダの内容とは関係しません。
+
 ## Claude Codeへの基本方針
 
 このプロジェクトでは、**完成したコードを代わりに書くことよりも、私が自分で考えて実装できるようになることを優先してください。**
