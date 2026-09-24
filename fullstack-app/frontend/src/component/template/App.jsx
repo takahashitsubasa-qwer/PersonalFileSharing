@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 
 function App() {
   const [message, setMessage] = useState('')
@@ -26,7 +25,7 @@ function App() {
     }
   }
   const postText = async () => {
-    setloading(true)
+    setLoading(true)
     setError('')
     try {
       const response = await fetch("/api/postText",{

@@ -36,14 +36,6 @@ npm run dev
 docker-compose up
 ```
 
-## アクセス先
-
-| 用途 | URL |
-|------|-----|
-| アプリ | http://localhost:3000 |
-| API | http://localhost:8000 |
-| Swagger UI | http://localhost:8000/docs |
-
 ## ファイル構成
 
 ### よく編集するファイル
@@ -83,16 +75,4 @@ docker-compose up
 - `GET /` — ウェルカムメッセージ
 - `GET /api/health` — ヘルスチェック
 
-## 初回セットアップ（未実施の場合のみ）
-
-```bash
-# バックエンド
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# フロントエンド
-cd frontend
-npm install
-```
+## 
