@@ -42,6 +42,10 @@ def postText(body:Text):
     print({"text": body.text, "server": body.server})
     return {"text": body.text}
 
+@app.get("/list")
+def get_list():
+    return {"status": "ok"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
