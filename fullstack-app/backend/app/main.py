@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from pydantic import BaseModel
-import os
 
 load_dotenv()
 
@@ -26,7 +25,9 @@ app.add_middleware(
 
 
 class Text(BaseModel):
+    server: str
     text: str
+    
 
 @app.get("/")
 def read_root():
@@ -37,9 +38,9 @@ def health_check():
     return {"status": "ok"}
 
 @app.post("/postText")
-def postText(text:Text):
-    print({"text": text.text})
-    return {"text": text.text}
+def postText(body:Text):
+    print({"text": body.text, "server": body.server})
+    return {"text": body.text}
 
 if __name__ == "__main__":
     import uvicorn

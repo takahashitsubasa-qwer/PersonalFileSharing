@@ -5,6 +5,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [text, setText] = useState("")
+  const [server, setServer] = useState("JP")
 
   useEffect(() => {
     fetchMessage()
@@ -24,6 +25,7 @@ function App() {
       setLoading(false)
     }
   }
+  
   const postText = async () => {
     setLoading(true)
     setError('')
@@ -33,10 +35,11 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: text }), 
+        body: JSON.stringify(
+          { "server": server, "text": text }
+        ), 
       })
       const data = await response.json()
-      console.log(data)
     } catch (err) {
       setError('テキストの送信に失敗しました')
       console.error(err)
@@ -75,33 +78,28 @@ function App() {
             </p>
           )}
         </div>
-
         <button
           onClick={fetchMessage}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105"
+          className="btn-primary w-full"
         >
           再度確認
         </button>
         <div className="mt-8 pt-6 border-t border-gray-200" />
+        <select 
+        value={server} onChange={(e) => setServer(e.target.value)} 
+        className='bg-white border border-gray-300 rounded-lg px-1 py-2'
+        >
+          <option value="JP">JP</option>
+          <option value="KR">KR</option>
+        </select>
         <input 
           type="text" name="example" 
           value={text} onChange={(e) => setText(e.target.value)} 
-          className='bg-white border border-gray-300 rounded-lg px-4 py-2' />
-        <button onClick={postText} className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105 ml-2'>
+          className='bg-white border border-gray-300 rounded-lg px-4 py-2' 
+        />
+        <button onClick={postText} className='btn-primary ml-2'>
           送信
         </button>
-        <h2>{text}</h2>
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            環境:
-          </h3>
-          <ul className="text-sm text-gray-600 space-y-1">
-            <li>✓ Python FastAPI</li>
-            <li>✓ React 18</li>
-            <li>✓ Tailwind CSS</li>
-            <li>✓ Vite</li>
-          </ul>
-        </div>
       </div>
     </div>
   )
