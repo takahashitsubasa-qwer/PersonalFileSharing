@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function App() {
+export function App() {
+  const navigate = useNavigate()
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -100,9 +102,11 @@ function App() {
         <button onClick={postText} className='btn-primary ml-2'>
           送信
         </button>
+        <div className="mt-8 pt-6 border-t border-gray-200" />
+        <button onClick={() => navigate('/list')} className="btn-primary w-full">
+          一覧へ
+        </button>
       </div>
     </div>
   )
 }
-
-export default App

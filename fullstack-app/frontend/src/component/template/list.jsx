@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function List() {
+export function List() {
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -31,7 +31,7 @@ function List() {
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           FullStack App
         </h1>
-      </div>  
+      </div>
     </div>
 )
 }
