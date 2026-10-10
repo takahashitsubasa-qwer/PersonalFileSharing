@@ -27,7 +27,9 @@ app.add_middleware(
 class Text(BaseModel):
     server: str
     text: str
-    
+
+
+summonerNameDict = {"text": "", "server": ""} 
 
 @app.get("/")
 def read_root():
@@ -37,14 +39,15 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-@app.post("/postText")
+@app.post("/Text")
 def postText(body:Text):
-    print({"text": body.text, "server": body.server})
+    summonerNameDict["text"] = body.text
+    summonerNameDict["server"] = body.server
     return {"text": body.text}
 
 @app.get("/list")
 def get_list():
-    return {"status": "ok"}
+    return summonerNameDict
 
 if __name__ == "__main__":
     import uvicorn

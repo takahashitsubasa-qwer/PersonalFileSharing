@@ -32,14 +32,14 @@ export function App() {
     setLoading(true)
     setError('')
     try {
-      const response = await fetch("/api/postText",{
+      const response = await fetch("/api/Text",{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(
           { "server": server, "text": text }
-        ), 
+        ),
       })
       const data = await response.json()
     } catch (err) {
@@ -48,6 +48,11 @@ export function App() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleSend = async () => {
+    await postText()
+    navigate('/list')
   }
 
 
@@ -99,12 +104,8 @@ export function App() {
           value={text} onChange={(e) => setText(e.target.value)} 
           className='bg-white border border-gray-300 rounded-lg px-4 py-2' 
         />
-        <button onClick={postText} className='btn-primary ml-2'>
+        <button onClick={handleSend} className='btn-primary ml-2'>
           送信
-        </button>
-        <div className="mt-8 pt-6 border-t border-gray-200" />
-        <button onClick={() => navigate('/list')} className="btn-primary w-full">
-          一覧へ
         </button>
       </div>
     </div>
