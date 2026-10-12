@@ -31,8 +31,7 @@ export function List() {
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           FullStack App
         </h1>
-        <h2>{message.text}</h2>
-        <h2>{message.server}</h2>
+        <h2>{message.list}</h2>
       </div>
     </div>
 )

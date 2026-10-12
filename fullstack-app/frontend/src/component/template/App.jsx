@@ -6,7 +6,8 @@ export function App() {
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [text, setText] = useState("")
+  const [gamename, setGameName] = useState("")
+  const [tagLine, setTagLine] = useState("")
   const [server, setServer] = useState("JP")
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(
-          { "server": server, "text": text }
+          { "server": server, "game_name": gamename, "tag_line": tagLine }
         ),
       })
       const data = await response.json()
@@ -101,7 +102,12 @@ export function App() {
         </select>
         <input 
           type="text" name="example" 
-          value={text} onChange={(e) => setText(e.target.value)} 
+          value={gamename} onChange={(e) => setGameName(e.target.value)} 
+          className='bg-white border border-gray-300 rounded-lg px-4 py-2' 
+        />
+        <input 
+          type="text" name="example" 
+          value={tagLine} onChange={(e) => setTagLine(e.target.value)} 
           className='bg-white border border-gray-300 rounded-lg px-4 py-2' 
         />
         <button onClick={handleSend} className='btn-primary ml-2'>

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from pydantic import BaseModel
+from .editRiotID.mainEdit import mainEdit
 
 load_dotenv()
 
@@ -26,10 +27,11 @@ app.add_middleware(
 
 class Text(BaseModel):
     server: str
-    text: str
+    game_name: str
+    tag_line: str
 
 
-summonerNameDict = {"text": "", "server": ""} 
+summonerNameDict = {"game_name": "", "tag_line": "", "server": ""} 
 
 @app.get("/")
 def read_root():
@@ -41,13 +43,15 @@ def health_check():
 
 @app.post("/Text")
 def postText(body:Text):
-    summonerNameDict["text"] = body.text
+    summonerNameDict["game_name"] = body.game_name
+    summonerNameDict["tag_line"] = body.tag_line
     summonerNameDict["server"] = body.server
-    return {"text": body.text}
+    return {"text": body.game_name}
 
 @app.get("/list")
 def get_list():
-    return summonerNameDict
+    print(mainEdit(summonerNameDict))
+    return {"list": mainEdit(summonerNameDict)}
 
 if __name__ == "__main__":
     import uvicorn
