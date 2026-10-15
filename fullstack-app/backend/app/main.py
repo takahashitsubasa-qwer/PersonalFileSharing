@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from pydantic import BaseModel
+
 from .editRiotID.mainEdit import mainEdit
 
 load_dotenv()
@@ -50,7 +51,6 @@ def postText(body:Text):
 
 @app.get("/list")
 def get_list():
-    print(mainEdit(summonerNameDict))
     return {"list": mainEdit(summonerNameDict)}
 
 if __name__ == "__main__":

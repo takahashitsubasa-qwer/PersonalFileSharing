@@ -1,10 +1,5 @@
 import requests
-import os
-
-API_KEY_ENV = os.getenv("API_KEY")
-headers = {
-    "X-Riot-Token": API_KEY_ENV
-}
+from ...config import headers
 
 def puuidToMatch(puuid):
     match_url = f"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?count={1}"
